@@ -11,16 +11,15 @@
 </head>
 <body>
 
-<!-- ПРЕЛОАДЕР -->
 <div class="loader" id="loader">
   <div class="loader-text">ПОНИЗОВЬЕ</div>
 </div>
 
-<!-- ШАПКА -->
 <header class="header">
   <a href="#" class="logo">ПОНИЗОВЬЕ<span>.</span></a>
   <nav class="nav">
     <a href="#about">О доме</a>
+    <a href="#gallery">Галерея</a>
     <a href="#amenities">Удобства</a>
     <a href="#prices">Цены</a>
     <a href="#rules">Правила</a>
@@ -28,25 +27,25 @@
   <a href="tel:+375297195981" class="phone">+375 29 719 5981</a>
 </header>
 
-<!-- ГЛАВНЫЙ ЭКРАН -->
 <section class="hero">
-  <div class="hero-bg-text">PO</div>
+  <div class="hero-bg" style="background-image: url('images/hero.jpg');"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
     <span class="hero-tag">— Загородный дом для мероприятий</span>
     <h1>Место, где<br>рождаются<br><em>воспоминания</em></h1>
     <p>Просторный дом в тихой деревне Понизовье — для свадеб, дней рождения, корпоративов и семейных праздников</p>
     <div class="hero-actions">
       <button class="btn btn-primary" onclick="openModal()">Забронировать</button>
-      <a href="#about" class="btn btn-ghost">Узнать больше</a>
+      <a href="#gallery" class="btn btn-ghost">Смотреть фото</a>
     </div>
     <div class="hero-stats">
       <div>
-        <strong>200 м²</strong>
+        <strong>240 м²</strong>
         <span>площадь дома</span>
       </div>
       <div>
-        <strong>30</strong>
-        <span>гостей максимум</span>
+        <strong>30+</strong>
+        <span>человек</span>
       </div>
       <div>
         <strong>28</strong>
@@ -56,7 +55,6 @@
   </div>
 </section>
 
-<!-- БЕГУЩАЯ СТРОКА -->
 <div class="marquee">
   <div class="marquee-track">
     <span>✦ СВАДЬБЫ ✦ ДНИ РОЖДЕНИЯ ✦ КОРПОРАТИВЫ ✦ СЕМЕЙНЫЕ ПРАЗДНИКИ ✦ ОТДЫХ НА ПРИРОДЕ ✦ КОМАНДИРОВАННЫЕ ✦</span>
@@ -64,41 +62,55 @@
   </div>
 </div>
 
-<!-- О ДОМЕ -->
 <section class="section" id="about">
   <div class="section-head">
     <span class="section-num">01</span>
     <h2>О доме</h2>
-    <p>Просторный дом для отдыха и торжеств в тихой деревне</p>
+    <p>Все условия для приятного и комфортного отдыха</p>
   </div>
-  <div class="grid-4">
-    <div class="card">
-      <span class="card-num">200</span>
-      <h3>м² общая площадь</h3>
-      <p>Две спальни по 5 мест, четыре комнаты, два санузла</p>
+  <div class="about-layout">
+    <div class="about-image">
+      <img src="images/about.jpg" alt="Зал с новогодним декором">
     </div>
-    <div class="card">
-      <span class="card-num">28</span>
-      <h3>соток участка</h3>
-      <p>Беседка, зона барбекю, детская площадка и батут</p>
-    </div>
-    <div class="card">
-      <span class="card-num">30</span>
-      <h3>гостей максимум</h3>
-      <p>Дом полностью подготовлен для больших мероприятий</p>
-    </div>
-    <div class="card">
-      <span class="card-num">24/7</span>
-      <h3>обработка заявок</h3>
-      <p>С 09:00 до 23:30 — всегда на связи для вас</p>
+    <div class="about-text">
+      <p class="about-lead">Просторный дом в тихой деревне Понизовье — идеальное место для больших праздников и уютных семейных вечеров.</p>
+      <p>Две спальни по 5 мест, четыре комнаты, два санузла, оборудованная кухня. На участке 28 соток — беседка, зона барбекю, детская площадка и батут. Для полного отдыха — сауна с бассейном.</p>
+      <div class="about-stats">
+        <div>
+          <strong>240</strong>
+          <span>м² площадь</span>
+        </div>
+        <div>
+          <strong>30+</strong>
+          <span>гостей</span>
+        </div>
+        <div>
+          <strong>28</strong>
+          <span>соток</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- УДОБСТВА -->
-<section class="section section-dark" id="amenities">
+<section class="section section-dark" id="gallery">
   <div class="section-head">
     <span class="section-num">02</span>
+    <h2>Галерея</h2>
+    <p>Посмотрите, как выглядит дом внутри</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item big"><img src="images/gallery-1.jpg" alt="Сауна"></div>
+    <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Бассейн"></div>
+    <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Кухня"></div>
+    <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Санузел"></div>
+    <div class="gallery-item big"><img src="images/gallery-7.jpg" alt="Зал со столами"></div>
+    <div class="gallery-item"><img src="images/gallery-8.jpg" alt="Бассейн с фигуркой"></div>
+  </div>
+</section>
+<section class="section" id="amenities">
+  <div class="section-head">
+    <span class="section-num">03</span>
     <h2>Удобства</h2>
     <p>Всё для комфортного отдыха и праздника</p>
   </div>
@@ -116,10 +128,9 @@
   </div>
 </section>
 
-<!-- ЦЕНЫ -->
- <section class="section" id="prices">
+<section class="section section-dark" id="prices">
   <div class="section-head">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2>Цены</h2>
     <p>Прозрачные условия — без скрытых платежей</p>
   </div>
@@ -148,10 +159,9 @@
   </div>
 </section>
 
-<!-- ПРАВИЛА -->
-<section class="section section-dark" id="rules">
+<section class="section" id="rules">
   <div class="section-head">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2>Правила проживания</h2>
     <p>Пожалуйста, ознакомьтесь перед бронированием</p>
   </div>
@@ -188,13 +198,13 @@
     </div>
     <div class="rule">
       <span class="rule-icon">👥</span>
-      <h4>Максимум</h4>
-      <p>30 гостей одновременно</p>
+      <h4>Вместимость</h4>
+      <p>30+ человек одновременно</p>
     </div>
     <div class="rule">
-      <span class="rule-icon">🚭</span>
+      <span class="rule-icon">🚬</span>
       <h4>Курение</h4>
-      <p>Запрещено на территории</p>
+      <p>Разрешено в специально отведённых местах</p>
     </div>
     <div class="rule">
       <span class="rule-icon">👶</span>
@@ -212,10 +222,9 @@
   </div>
 </section>
 
-<!-- КОНТАКТЫ -->
-<section class="section" id="contacts">
+<section class="section section-dark" id="contacts">
   <div class="section-head">
-    <span class="section-num">05</span>
+    <span class="section-num">06</span>
     <h2>Контакты</h2>
     <p>Свяжитесь с нами любым удобным способом</p>
   </div>
@@ -225,7 +234,7 @@
       <a href="tel:+375297195981">+375 29 719 5981</a>
     </div>
     <div class="contact">
-      <span class="contact-label">Адрес</span>
+        <span class="contact-label">Адрес</span>
       <p>д. Понизовье, ул. Поддубская, 35</p>
     </div>
     <div class="contact">
@@ -242,7 +251,6 @@
   </div>
 </section>
 
-<!-- ПОДВАЛ -->
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-logo">ПОНИЗОВЬЕ<span>.</span></div>
@@ -254,9 +262,8 @@
   </div>
 </footer>
 
-<!-- МОДАЛЬНОЕ ОКНО -->
 <div class="modal" id="modal">
-    <div class="modal-bg" onclick="closeModal()"></div>
+  <div class="modal-bg" onclick="closeModal()"></div>
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">×</button>
     <span class="modal-tag">Бронирование</span>
