@@ -23,21 +23,45 @@ body {
 
 h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spacing: -1px; }
 
-/* ПРЕЛОАДЕР */
+/* ============ */
+/* ПРЕЛОАДЕР    */
+/* ============ */
 .loader {
-  position: fixed; inset: 0;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   background: var(--black);
   z-index: 9999;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.8s, visibility 0.8s;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
-.loader.hidden { opacity: 0; visibility: hidden; }
+
+.loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .loader-text {
   font-family: 'Unbounded', sans-serif;
-  font-weight: 900; font-size: 42px;
-  letter-spacing: 8px; color: var(--accent);
+  font-weight: 900;
+  font-size: 42px;
+  letter-spacing: 8px;
+  color: var(--accent);
   animation: pulseText 1.5s ease-in-out infinite;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 100%;
+  word-break: break-word;
+  line-height: 1.1;
 }
+
 @keyframes pulseText {
   0%, 100% { opacity: 0.3; letter-spacing: 8px; }
   50% { opacity: 1; letter-spacing: 16px; }
@@ -383,49 +407,6 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 .gallery-item:hover img { transform: scale(1.08); }
 .gallery-item.big { grid-column: span 2; grid-row: span 2; }
 
-/* ДЕКОРАТИВНЫЕ БЛОКИ */
-.gallery-deco-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  background: linear-gradient(135deg, rgba(201,169,97,0.08), rgba(201,169,97,0.02));
-  border: 1px solid rgba(201,169,97,0.2);
-  border-radius: 4px;
-  position: relative;
-  padding: 20px;
-}
-
-.gallery-deco-text::before {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(201,169,97,0.3);
-  border-radius: 2px;
-  pointer-events: none;
-}
-
-.deco-script {
-  font-family: 'Caveat', cursive;
-  font-size: 46px;
-  color: var(--accent);
-  text-shadow: 0 0 20px rgba(201,169,97,0.5);
-  transform: rotate(-5deg);
-  line-height: 1;
-}
-
-.gallery-deco-text.small .deco-script {
-  font-size: 38px;
-}
-
-.deco-line {
-  width: 60px;
-  height: 1px;
-  background: var(--accent);
-  opacity: 0.6;
-}
-
 /* ============================ */
 /* ВЕРТИКАЛЬНЫЕ ЛЕНТЫ У ГАЛЕРЕИ */
 /* ============================ */
@@ -491,7 +472,6 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 
 .ribbon-track.up { animation: scrollUp 40s linear infinite; }
 .ribbon-track.down { animation: scrollDown 40s linear infinite; }
-
 @keyframes scrollUp {
   from { transform: translateY(0); }
   to { transform: translateY(-50%); }
@@ -612,6 +592,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 }
 .pay-note p { font-size: 17px; color: var(--white); }
 .pay-note strong { color: var(--accent); }
+
 /* КОНТАКТЫ */
 .contacts {
   display: grid;
@@ -750,8 +731,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   .gallery-wrapper { grid-template-columns: 50px 1fr 50px; gap: 15px; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; gap: 20px; }
   .gallery-item.big { grid-column: span 2; grid-row: span 1; }
-  ribbon-track span { font-size: 12px; letter-spacing: 4px; padding: 20px 0; }
-  .deco-script { font-size: 36px; }
+  .ribbon-track span { font-size: 12px; letter-spacing: 4px; padding: 20px 0; }
 }
 
 /* Телефоны */
@@ -769,7 +749,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   .price-card { padding: 45px 30px; }
   .price-card .price { font-size: 56px; }
   .modal-box { padding: 40px 25px; }
-  .modal-box h2 { font-size: 28px; }
+  modal-box h2 { font-size: 28px; }
   .footer-logo { font-size: 34px; letter-spacing: 4px; }
   .marquee-track span { font-size: 16px; }
   .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; gap: 20px; }
@@ -784,10 +764,6 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   .side-ribbon {
     height: 55px;
     min-height: 55px;
-    border-top: 1px solid rgba(201,169,97,0.4);
-    border-bottom: 1px solid rgba(201,169,97,0.4);
-    border-left: none;
-    border-right: none;
   }
   .side-ribbon::before,
   .side-ribbon::after {
@@ -831,5 +807,27 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   @keyframes scrollHorizontal {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+
+  /* ПРЕЛОАДЕР НА ТЕЛЕФОНЕ */
+  .loader-text {
+    font-size: 32px;
+    letter-spacing: 4px;
+    padding: 0 15px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+  .loader {
+    height: 100vh;
+    height: 100dvh;
+    width: 100vw;
+  }
+  .loader-text {
+    font-size: 26px;
+    letter-spacing: 3px;
+    padding: 0 15px;
+    line-height: 1.2;
   }
 }
