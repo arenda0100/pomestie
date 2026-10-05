@@ -311,7 +311,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 }
 
 /* ==================== */
-/* ГАЛЕРЕЯ С ЛЕНТАМИ   */
+/* ГАЛЕРЕЯ С ЛЕНТАМИ    */
 /* ==================== */
 .gallery-wrapper {
   display: grid;
@@ -737,7 +737,11 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 }
 .modal-box .btn { margin-top: 10px; }
 
-/* АДАПТИВНОСТЬ */
+/* ============================= */
+/* АДАПТИВНОСТЬ                  */
+/* ============================= */
+
+/* Планшеты */
 @media (max-width: 1024px) {
   .hero h1 { font-size: 68px; }
   .section-head h2 { font-size: 52px; }
@@ -746,12 +750,13 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   .gallery-wrapper { grid-template-columns: 50px 1fr 50px; gap: 15px; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; gap: 20px; }
   .gallery-item.big { grid-column: span 2; grid-row: span 1; }
-  .ribbon-track span { font-size: 12px; letter-spacing: 4px; padding: 20px 0; }
+  ribbon-track span { font-size: 12px; letter-spacing: 4px; padding: 20px 0; }
   .deco-script { font-size: 36px; }
 }
 
+/* Телефоны */
 @media (max-width: 768px) {
-  header { padding: 18px 25px; }
+  .header { padding: 18px 25px; }
   .nav { display: none; }
   .hero { padding: 120px 25px 60px; }
   .hero h1 { font-size: 44px; }
@@ -767,9 +772,64 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   .modal-box h2 { font-size: 28px; }
   .footer-logo { font-size: 34px; letter-spacing: 4px; }
   .marquee-track span { font-size: 16px; }
-  .gallery-wrapper { grid-template-columns: 1fr; }
-  .side-ribbon { display: none; }
-  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; gap: 20px; }
   .gallery-item.big { grid-column: span 1; }
   .footer-bottom { justify-content: center; text-align: center; }
+
+  /* ЛЕНТЫ НА ТЕЛЕФОНЕ — ГОРИЗОНТАЛЬНЫЕ */
+  .gallery-wrapper {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .side-ribbon {
+    height: 55px;
+    min-height: 55px;
+    border-top: 1px solid rgba(201,169,97,0.4);
+    border-bottom: 1px solid rgba(201,169,97,0.4);
+    border-left: none;
+    border-right: none;
+  }
+  .side-ribbon::before,
+  .side-ribbon::after {
+    top: 0;
+    bottom: 0;
+    height: auto;
+    width: 50px;
+  }
+  .side-ribbon::before {
+    left: 0;
+    right: auto;
+    background: linear-gradient(90deg, var(--dark-2) 0%, transparent 100%);
+  }
+  .side-ribbon::after {
+    right: 0;
+    left: auto;
+    background: linear-gradient(270deg, var(--dark-2) 0%, transparent 100%);
+  }
+  .ribbon-track {
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+  }
+  .ribbon-track span {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+    padding: 0 40px;
+    font-size: 12px;
+    letter-spacing: 4px;
+    display: block;
+    line-height: 55px;
+  }
+  .ribbon-track.up,
+  .ribbon-track.down {
+    animation: scrollHorizontal 30s linear infinite;
+  }
+  @keyframes scrollHorizontal {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 }
