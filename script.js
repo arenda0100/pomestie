@@ -1,18 +1,22 @@
 // Прелоадер
 window.addEventListener('load', () => {
   setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden');
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hidden');
   }, 900);
 });
+
 // Шапка при прокрутке
 window.addEventListener('scroll', () => {
   const header = document.querySelector('.header');
+  if (!header) return;
   if (window.scrollY > 80) {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
 });
+
 // Плавная прокрутка
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', function(e) {
@@ -27,32 +31,61 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
   });
 });
+
 // Модальное окно
 function openModal() {
-  document.getElementById('modal').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  const modal = document.getElementById('modal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 }
+
 function closeModal() {
-  document.getElementById('modal').classList.remove('active');
-  document.body.style.overflow = '';
+  const modal = document.getElementById('modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 }
+
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
 });
-// =====================================
+
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('modal');
+  if (modal && e.target.classList.contains('modal-bg')) {
+    closeModal();
+  }
+});
+
 // ОТПРАВКА ЗАЯВКИ В TELEGRAM
-// =====================================
 const TELEGRAM_BOT_TOKEN = '8049723887:AAHcyIoJcYB9zx4GY8UDnZ3DDWUS2VauY6E';
 const TELEGRAM_CHAT_ID = '751833823';
+
 async function sendToTelegram(event) {
-  event.preventDefault();
-  const name = document.getElementById('tg-name').value.trim();
-  const phone = document.getElementById('tg-phone').value.trim();
-  const comment = document.getElementById('tg-comment').value.trim();
+  if (event) event.preventDefault();
+
+  const nameEl = document.getElementById('tg-name');
+  const phoneEl = document.getElementById('tg-phone');
+  const commentEl = document.getElementById('tg-comment');
+
+  if (!nameEl || !phoneEl || !commentEl) {
+    alert('Ошибка формы. Позвоните нам: +375 29 719 5981');
+    return;
+  }
+
+  const name = nameEl.value.trim();
+  const phone = phoneEl.value.trim();
+  const comment = commentEl.value.trim();
+
   const message = `🏡 НОВАЯ ЗАЯВКА С САЙТА ПОНИЗОВЬЕ
+
 👤 Имя: ${name}
 📞 Телефон: ${phone}
 💬 Комментарий: ${comment || '—'}`;
+
   try {
     const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
@@ -62,11 +95,12 @@ async function sendToTelegram(event) {
         text: message
       })
     });
+
     if (response.ok) {
       closeModal();
-      document.getElementById('tg-name').value = '';
-      document.getElementById('tg-phone').value = '';
-      document.getElementById('tg-comment').value = '';
+      nameEl.value = '';
+      phoneEl.value = '';
+      commentEl.value = '';
       setTimeout(() => {
         alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в течение часа.');
       }, 200);
@@ -77,6 +111,7 @@ async function sendToTelegram(event) {
     alert('Ошибка соединения. Позвоните нам: +375 29 719 5981');
   }
 }
+
 // Анимация появления карточек
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -86,7 +121,8 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.1 });
-document.querySelectorAll('.rule, .price-card, .contact').forEach(el => {
+
+document.querySelectorAll('.rule, .price-card, .contact, .amenity-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
   el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';

@@ -23,9 +23,7 @@ body {
 
 h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spacing: -1px; }
 
-/* ============ */
-/* ПРЕЛОАДЕР    */
-/* ============ */
+/* ПРЕЛОАДЕР */
 .loader {
   position: fixed;
   top: 0; left: 0;
@@ -43,10 +41,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   margin: 0;
 }
 
-.loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
+.loader.hidden { opacity: 0; visibility: hidden; }
 
 .loader-text {
   font-family: 'Unbounded', sans-serif;
@@ -54,17 +49,17 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   font-size: 42px;
   letter-spacing: 8px;
   color: var(--accent);
-  animation: pulseText 1.5s ease-in-out infinite;
+  animation: pulseText 2s ease-in-out infinite;
   text-align: center;
   padding: 0 20px;
   max-width: 100%;
-  word-break: break-word;
   line-height: 1.1;
+  margin-right: -8px;
 }
 
 @keyframes pulseText {
-  0%, 100% { opacity: 0.3; letter-spacing: 8px; }
-  50% { opacity: 1; letter-spacing: 16px; }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 
 /* ШАПКА */
@@ -240,7 +235,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   color: var(--gray);
 }
 
-/* О ДОМЕ — МУЗЕЙНАЯ РАМКА */
+/* О ДОМЕ */
 .about-layout {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 60px; align-items: center;
@@ -334,9 +329,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   letter-spacing: 1px; text-transform: uppercase;
 }
 
-/* ==================== */
-/* ГАЛЕРЕЯ С ЛЕНТАМИ    */
-/* ==================== */
+/* ГАЛЕРЕЯ */
 .gallery-wrapper {
   display: grid;
   grid-template-columns: 70px 1fr 70px;
@@ -347,14 +340,14 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 280px;
-  gap: 30px;
+  grid-auto-rows: 260px;
+  gap: 20px;
 }
 
 .gallery-item {
   position: relative;
   cursor: pointer;
-  padding: 12px;
+  padding: 10px;
   background: linear-gradient(135deg, rgba(201,169,97,0.4), rgba(201,169,97,0.1), rgba(201,169,97,0.4));
   border-radius: 4px;
   transition: all 0.5s;
@@ -364,7 +357,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 .gallery-item::before {
   content: '';
   position: absolute;
-  inset: 8px;
+  inset: 6px;
   border: 1px solid rgba(201,169,97,0.6);
   pointer-events: none;
   z-index: 3;
@@ -383,7 +376,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 }
 
 .gallery-item:hover {
-  padding: 6px;
+  padding: 5px;
   box-shadow:
     0 0 30px rgba(201,169,97,0.5),
     0 0 60px rgba(201,169,97,0.25),
@@ -392,7 +385,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 }
 
 .gallery-item:hover::before {
-  inset: 4px;
+  inset: 3px;
   border-color: var(--accent);
 }
 .gallery-item:hover::after { opacity: 1; }
@@ -407,9 +400,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 .gallery-item:hover img { transform: scale(1.08); }
 .gallery-item.big { grid-column: span 2; grid-row: span 2; }
 
-/* ============================ */
-/* ВЕРТИКАЛЬНЫЕ ЛЕНТЫ У ГАЛЕРЕИ */
-/* ============================ */
+/* ЛЕНТЫ */
 .side-ribbon {
   position: relative;
   background: linear-gradient(180deg,
@@ -472,6 +463,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 
 .ribbon-track.up { animation: scrollUp 40s linear infinite; }
 .ribbon-track.down { animation: scrollDown 40s linear infinite; }
+
 @keyframes scrollUp {
   from { transform: translateY(0); }
   to { transform: translateY(-50%); }
@@ -483,83 +475,289 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 }
 
 /* УДОБСТВА */
-.amenities-list {
+.amenities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 0;
-  border-top: 1px solid rgba(201,169,97,0.15);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
-.amenity {
-  padding: 30px 0;
-  border-bottom: 1px solid rgba(201,169,97,0.15);
-  display: flex; align-items: center; gap: 25px;
-  font-size: 19px; color: var(--white);
-  transition: all 0.4s;
+
+.amenity-card {
+  position: relative;
+  background: linear-gradient(160deg, rgba(201,169,97,0.08) 0%, rgba(26,24,21,0.9) 100%);
+  border: 1px solid rgba(201,169,97,0.15);
+  border-radius: 18px;
+  padding: 35px 25px 30px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.amenity span {
+
+.amenity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s;
+}
+
+.amenity-card::after {
+  content: '';
+  position: absolute;
+  top: -40%; right: -40%;
+  width: 180%; height: 180%;
+  background: radial-gradient(circle, rgba(201,169,97,0.15), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+}
+
+.amenity-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.5),
+    0 0 40px rgba(201,169,97,0.15);
+}
+
+.amenity-card:hover::before { transform: scaleX(1); }
+.amenity-card:hover::after { opacity: 1; }
+
+.amenity-icon {
+  font-size: 44px;
+  line-height: 1;
+  margin-bottom: 15px;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(201,169,97,0.3));
+  transition: transform 0.5s;
+}
+
+.amenity-card:hover .amenity-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.amenity-num {
+  position: absolute;
+  top: 20px; right: 22px;
   font-family: 'Unbounded', sans-serif;
-  font-weight: 400; font-size: 13px;
-  color: var(--gray); letter-spacing: 2px;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--accent);
+  opacity: 0.6;
 }
-.amenity:hover { padding-left: 25px; color: var(--accent); }
-.amenity:hover span { color: var(--accent); }
-.amenity.highlight { color: var(--accent); font-weight: 600; }
+
+.amenity-card h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 2;
+}
+
+.amenity-card p {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+.amenity-card.featured {
+  background: linear-gradient(160deg, rgba(201,169,97,0.25) 0%, rgba(26,24,21,0.95) 100%);
+  border-color: rgba(201,169,97,0.5);
+}
+
+.amenity-card.featured::before { transform: scaleX(1); }
+.amenity-card.featured .amenity-icon { filter: drop-shadow(0 0 25px rgba(201,169,97,0.7)); }
 
 /* ЦЕНЫ */
 .prices {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
+
 .price-card {
-  background: var(--dark-2);
-  padding: 60px 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(201,169,97,0.15);
   position: relative;
-  transition: all 0.5s;
+  background: linear-gradient(160deg, rgba(26,24,21,0.98) 0%, rgba(13,13,13,1) 100%);
+  padding: 45px 35px 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(201,169,97,0.2);
   overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-align: center;
 }
+
 .price-card::before {
   content: '';
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.5s;
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201,169,97,0.25), transparent 70%);
+  opacity: 0.6;
+  transition: opacity 0.6s;
+  pointer-events: none;
 }
-.price-card:hover::before { transform: scaleX(1); }
+
+.price-card::after {
+  content: '';
+  position: absolute;
+  top: 14px; left: 14px; right: 14px; bottom: 14px;
+  border: 1px solid rgba(201,169,97,0.12);
+  border-radius: 16px;
+  pointer-events: none;
+  transition: all 0.6s;
+}
+
 .price-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-12px);
   border-color: var(--accent);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.6),
+    0 0 60px rgba(201,169,97,0.2);
 }
+
+.price-card:hover::before { opacity: 1; }
+.price-card:hover::after {
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border-color: rgba(201,169,97,0.4);
+}
+
 .price-card.featured {
-  background: linear-gradient(180deg, rgba(201,169,97,0.15), var(--dark-2));
+  background: linear-gradient(160deg, rgba(201,169,97,0.18) 0%, rgba(26,24,21,1) 100%);
   border-color: var(--accent);
+  transform: scale(1.02);
 }
-.price-tag {
-  display: inline-block; font-size: 12px;
-  letter-spacing: 3px; text-transform: uppercase;
-  color: var(--accent); padding: 6px 16px;
-  border: 1px solid var(--accent);
-  border-radius: 100px; margin-bottom: 30px;
+
+.price-card.featured::before {
+  background: radial-gradient(circle, rgba(232,176,75,0.4), transparent 70%);
 }
+
+.price-card.featured:hover {
+  transform: scale(1.02) translateY(-12px);
+}
+
+.price-badge {
+  position: absolute;
+  top: 22px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--black);
+  padding: 6px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(201,169,97,0.4);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.price-card.featured .price-badge {
+  background: var(--accent);
+  color: var(--black);
+}
+
+.price-icon {
+  font-size: 52px;
+  line-height: 1;
+  margin: 40px 0 20px;
+  display: block;
+  filter: drop-shadow(0 0 20px rgba(201,169,97,0.5));
+  transition: transform 0.6s;
+}
+
+.price-card:hover .price-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
 .price-card h3 {
   font-family: 'Playfair Display', serif;
-  font-style: italic; font-weight: 400;
-  font-size: 26px; color: var(--white);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--white);
   margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
 }
-.price-card .price {
+
+.price-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 0 auto 25px;
+  position: relative;
+}
+
+.price-line::before {
+  content: '✦';
+  position: absolute;
+  top: -9px; left: 50%;
+  transform: translateX(-50%);
+  color: var(--accent);
+  font-size: 12px;
+  background: var(--dark-2);
+  padding: 0 8px;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.price-num {
   font-family: 'Unbounded', sans-serif;
-  font-weight: 900; font-size: 72px;
-  color: var(--accent); line-height: 1;
-  margin-bottom: 25px; letter-spacing: -3px;
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 1;
+  background: linear-gradient(180deg, #f4d47c 0%, #c9a961 60%, #8b6914 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -3px;
+  filter: drop-shadow(0 0 20px rgba(201,169,97,0.4));
 }
-.price-card .price span { font-size: 48px; }
-.price-card p { font-size: 16px; color: var(--gray); line-height: 1.7; }
-.price-card p strong { color: var(--accent); font-weight: 600; }
+
+.price-cur {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.price-card p {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+  padding: 0 10px;
+}
+
+.price-card p strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .cta { text-align: center; margin-top: 80px; }
 
 /* ПРАВИЛА */
@@ -722,19 +920,17 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 /* АДАПТИВНОСТЬ                  */
 /* ============================= */
 
-/* Планшеты */
 @media (max-width: 1024px) {
   .hero h1 { font-size: 68px; }
   .section-head h2 { font-size: 52px; }
   .about-layout { grid-template-columns: 1fr; gap: 40px; }
   .about-image img { height: 400px; }
   .gallery-wrapper { grid-template-columns: 50px 1fr 50px; gap: 15px; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; gap: 20px; }
-  .gallery-item.big { grid-column: span 2; grid-row: span 1; }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 200px; gap: 15px; }
+  .gallery-item.big { grid-column: span 2; grid-row: span 2; }
   .ribbon-track span { font-size: 12px; letter-spacing: 4px; padding: 20px 0; }
 }
 
-/* Телефоны */
 @media (max-width: 768px) {
   .header { padding: 18px 25px; }
   .nav { display: none; }
@@ -746,49 +942,38 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   .section { padding: 80px 25px; }
   .section-head h2 { font-size: 40px; }
   .section-head p { font-size: 18px; }
-  .price-card { padding: 45px 30px; }
-  .price-card .price { font-size: 56px; }
+  .price-card { padding: 45px 25px 35px; }
+  .price-num { font-size: 56px; }
+  .price-icon { font-size: 42px; margin: 35px 0 15px; }
+  .price-card h3 { font-size: 20px; margin-bottom: 20px; }
+  .price-line { margin-bottom: 20px; }
+  .price { margin-bottom: 20px; }
+  .price-cur { font-size: 18px; }
   .modal-box { padding: 40px 25px; }
-  modal-box h2 { font-size: 28px; }
+  .modal-box h2 { font-size: 28px; }
   .footer-logo { font-size: 34px; letter-spacing: 4px; }
   .marquee-track span { font-size: 16px; }
-  .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; gap: 20px; }
-  .gallery-item.big { grid-column: span 1; }
+  gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; gap: 10px; }
+  .gallery-item.big { grid-column: span 2; grid-row: span 2; }
   .footer-bottom { justify-content: center; text-align: center; }
 
-  /* ЛЕНТЫ НА ТЕЛЕФОНЕ — ГОРИЗОНТАЛЬНЫЕ */
-  .gallery-wrapper {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  .side-ribbon {
-    height: 55px;
-    min-height: 55px;
-  }
-  .side-ribbon::before,
-  .side-ribbon::after {
-    top: 0;
-    bottom: 0;
-    height: auto;
-    width: 50px;
+  .gallery-wrapper { grid-template-columns: 1fr; gap: 15px; }
+  .side-ribbon { height: 55px; min-height: 55px; }
+  .side-ribbon::before, .side-ribbon::after {
+    top: 0; bottom: 0; height: auto; width: 50px;
   }
   .side-ribbon::before {
-    left: 0;
-    right: auto;
+    left: 0; right: auto;
     background: linear-gradient(90deg, var(--dark-2) 0%, transparent 100%);
   }
   .side-ribbon::after {
-    right: 0;
-    left: auto;
+    right: 0; left: auto;
     background: linear-gradient(270deg, var(--dark-2) 0%, transparent 100%);
   }
   .ribbon-track {
     flex-direction: row;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 0; bottom: 0; left: 0; right: 0;
     align-items: center;
   }
   .ribbon-track span {
@@ -800,8 +985,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
     display: block;
     line-height: 55px;
   }
-  .ribbon-track.up,
-  .ribbon-track.down {
+  .ribbon-track.up, .ribbon-track.down {
     animation: scrollHorizontal 30s linear infinite;
   }
   @keyframes scrollHorizontal {
@@ -809,15 +993,27 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
     to { transform: translateX(-50%); }
   }
 
-  /* ПРЕЛОАДЕР НА ТЕЛЕФОНЕ */
   .loader-text {
     font-size: 32px;
     letter-spacing: 4px;
     padding: 0 15px;
+    margin-right: -4px;
   }
+
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .amenity-card {
+    padding: 25px 18px 22px;
+    border-radius: 14px;
+  }
+  .amenity-icon { font-size: 34px; margin-bottom: 10px; }
+  .amenity-card h4 { font-size: 13px; margin-bottom: 6px; }
+  .amenity-card p { font-size: 12px; line-height: 1.4; }
+  .amenity-num { top: 15px; right: 16px; font-size: 11px; }
 }
 
-/* Очень маленькие экраны */
 @media (max-width: 480px) {
   .loader {
     height: 100vh;
@@ -828,6 +1024,16 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
     font-size: 26px;
     letter-spacing: 3px;
     padding: 0 15px;
+    margin-right: -3px;
     line-height: 1.2;
   }
+  .amenities-grid { gap: 10px; }
+  .amenity-card { padding: 22px 15px 20px; }
+  .amenity-icon { font-size: 30px; }
+  .amenity-card h4 { font-size: 12px; }
+  .amenity-card p { font-size: 11px; }
+
+  .price-num { font-size: 48px; }
+  .price-icon { font-size: 38px; }
+  .price-badge { font-size: 10px; padding: 5px 14px; letter-spacing: 2px; }
 }
