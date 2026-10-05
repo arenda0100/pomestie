@@ -291,10 +291,10 @@
     <span class="modal-tag">Бронирование</span>
     <h2>Оставьте заявку</h2>
     <p>Мы свяжемся с вами в течение часа</p>
-    <form onsubmit="event.preventDefault(); sendForm();">
-      <input type="text" placeholder="Ваше имя" required>
-      <input type="tel" placeholder="Телефон" required>
-      <textarea placeholder="Сколько гостей, нужна ли сауна, на какие даты" rows="4"></textarea>
+    <form onsubmit="sendToTelegram(event);">
+      <input type="text" id="tg-name" placeholder="Ваше имя" required>
+      <input type="tel" id="tg-phone" placeholder="Телефон" required>
+      <textarea id="tg-comment" placeholder="Сколько гостей, нужна ли сауна, на какие даты" rows="4"></textarea>
       <button type="submit" class="btn btn-primary">Отправить заявку</button>
     </form>
   </div>
