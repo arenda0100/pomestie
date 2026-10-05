@@ -464,18 +464,17 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 .ribbon-track.up { animation: scrollUp 40s linear infinite; }
 .ribbon-track.down { animation: scrollDown 40s linear infinite; }
 
- height@keyframes scrollUp {
-  from { transform:: translateY(0); }
-  to {  transform: translateY(-50%); }
+@keyframes scrollUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
 }
 
-@180keyframes scrollDown {
- %;
- from { transform: translateY(-50%); }
+@keyframes scrollDown {
+  from { transform: translateY(-50%); }
   to { transform: translateY(0); }
 }
 
-/* УДО БСТВА */
+/* УДОБСТВА */
 .amenities-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -507,7 +506,8 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   content: '';
   position: absolute;
   top: -40%; right: -40%;
-  width: 180%; background: radial-gradient(circle, rgba(201,169,97,0.15), transparent 60%);
+  width: 180%; height: 180%;
+  background: radial-gradient(circle, rgba(201,169,97,0.15), transparent 60%);
   opacity: 0;
   transition: opacity 0.6s;
   pointer-events: none;
@@ -957,8 +957,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
     grid-auto-rows: 220px;
     gap: 12px;
   }
-  .gallery-item.
-  big { grid-column: span 1; grid-row: span 1; }
+  .gallery-item.big { grid-column: span 1; grid-row: span 1; }
   .gallery-item { padding: 8px; }
   .gallery-item::before { inset: 4px; }
 
