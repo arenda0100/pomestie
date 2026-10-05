@@ -916,10 +916,7 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
 }
 .modal-box .btn { margin-top: 10px; }
 
-/* ============================= */
-/* АДАПТИВНОСТЬ                  */
-/* ============================= */
-
+/* АДАПТИВНОСТЬ */
 @media (max-width: 1024px) {
   .hero h1 { font-size: 68px; }
   .section-head h2 { font-size: 52px; }
@@ -953,8 +950,17 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   .modal-box h2 { font-size: 28px; }
   .footer-logo { font-size: 34px; letter-spacing: 4px; }
   .marquee-track span { font-size: 16px; }
-  gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; gap: 10px; }
-  .gallery-item.big { grid-column: span 2; grid-row: span 2; }
+
+  /* ГАЛЕРЕЯ НА ТЕЛЕФОНЕ — ОДИНАКОВЫЕ ФОТО */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
+    gap: 12px;
+  }
+  .gallery-item.big { grid-column: span 1; grid-row: span 1; }
+  .gallery-item { padding: 8px; }
+  .gallery-item::before { inset: 4px; }
+
   .footer-bottom { justify-content: center; text-align: center; }
 
   .gallery-wrapper { grid-template-columns: 1fr; gap: 15px; }
@@ -1036,4 +1042,13 @@ h1, h2, h3 { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spac
   .price-num { font-size: 48px; }
   .price-icon { font-size: 38px; }
   .price-badge { font-size: 10px; padding: 5px 14px; letter-spacing: 2px; }
+
+  /* ГАЛЕРЕЯ НА МАЛЕНЬКИХ ЭКРАНАХ */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+    gap: 10px;
+  }
+  .gallery-item { padding: 6px; }
+  .gallery-item::before { inset: 3px; }
 }
